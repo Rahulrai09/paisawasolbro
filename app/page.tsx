@@ -1,5 +1,6 @@
-import Nav from "@/components/Nav";
+﻿import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import CategoryGrid from "@/components/CategoryGrid";
 import TodaysPicks from "@/components/TodaysPicks";
 import ExclusivePicks from "@/components/ExclusivePicks";
@@ -10,6 +11,7 @@ export default function Home() {
     <main>
       <Nav />
       <Hero />
+      <Marquee />
       <CategoryGrid />
       <TodaysPicks />
       <ExclusivePicks />
@@ -17,3 +19,4 @@ export default function Home() {
     </main>
   );
 }
+

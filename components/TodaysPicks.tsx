@@ -1,4 +1,4 @@
-import { products } from "@/lib/data";
+﻿import { products } from "@/lib/data";
 import ProductCard from "./ProductCard";
 
 export default function TodaysPicks() {
@@ -10,14 +10,14 @@ export default function TodaysPicks() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <span className="price-tag price-tag--gold mb-3">
+            <span className="eyebrow price-tag price-tag--gold tilt-l mb-3">
               Updated daily
             </span>
             <h2 className="font-display text-3xl text-paper md:text-5xl">
               TODAY&apos;S PICKS
             </h2>
           </div>
-          <p className="hidden max-w-xs text-right text-sm text-paper/60 md:block">
+          <p className="eyebrow hidden max-w-xs text-right text-base text-paper/60 md:block">
             Everyone sees these. Click through free, no subscription needed.
           </p>
         </div>
@@ -33,3 +33,4 @@ export default function TodaysPicks() {
     </section>
   );
 }
+

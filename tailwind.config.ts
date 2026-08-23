@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -8,16 +8,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#14110E",
-        inkSoft: "#211C17",
-        gold: "#E8A93B",
-        terracotta: "#C6684B",
-        paper: "#F3EDE1",
-        paperDim: "#E4DCC9",
+        ink: "#FFFFFF",
+        inkSoft: "#FFF3F2",
+        inkLine: "#F3D9D8",
+        gold: "#E01B1B",
+        goldBright: "#FF3B30",
+        rust: "#A81810",
+        paper: "#1C1310",
+        paperDim: "#7A6664",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
+        accent: ["var(--font-accent)", "serif"],
       },
       backgroundImage: {
         grain: "url('/grain.png')",
@@ -27,3 +30,4 @@ const config: Config = {
   plugins: [],
 };
 export default config;
+

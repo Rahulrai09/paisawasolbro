@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import type { Product } from "@/lib/data";
 
 function discountPercent(price: number, mrp: number) {
@@ -15,7 +15,7 @@ export default function ProductCard({
   const off = discountPercent(product.price, product.mrp);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden bg-inkSoft">
+    <div className="group relative flex flex-col overflow-hidden bg-inkSoft outline outline-1 outline-inkLine transition-transform duration-300 hover:-translate-y-1">
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={product.image}
@@ -25,21 +25,21 @@ export default function ProductCard({
             locked ? "blur-md scale-105" : ""
           }`}
         />
-        <span className="price-tag price-tag--gold absolute left-3 top-3">
+        <span className="stamp absolute left-3 top-3 border-gold text-gold">
           {off}% off
         </span>
-        <span className="price-tag price-tag--dark absolute right-3 top-3">
+        <span className="price-tag price-tag--dark absolute right-3 top-3 text-[0.6rem]">
           via {product.source}
         </span>
 
         {locked && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-ink/60 text-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/65 text-center">
             <svg
               width="22"
               height="22"
               viewBox="0 0 24 24"
               fill="none"
-              className="text-gold"
+              className="text-goldBright"
             >
               <rect
                 x="5"
@@ -56,23 +56,23 @@ export default function ProductCard({
                 strokeWidth="1.8"
               />
             </svg>
-            <p className="px-4 text-xs font-semibold uppercase tracking-wide text-paper">
+            <p className="px-4 text-xs font-semibold uppercase tracking-wide text-white">
               Members-only pick
             </p>
           </div>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 p-4">
+      <div className="perforated flex flex-1 flex-col gap-2 p-4 pt-5">
         <h3 className="font-body text-sm font-semibold text-paper">
           {product.name}
         </h3>
         <div className="flex items-baseline gap-2">
-          <span className="font-display text-lg text-gold">
-            ₹{product.price}
+          <span className="font-accent text-xl italic text-gold">
+            â‚¹{product.price}
           </span>
           <span className="text-xs text-paper/40 line-through">
-            ₹{product.mrp}
+            â‚¹{product.mrp}
           </span>
         </div>
 
@@ -88,10 +88,11 @@ export default function ProductCard({
             href={product.href}
             className="mt-2 text-center text-xs font-bold uppercase tracking-wide text-paper/80 underline underline-offset-4 transition-colors hover:text-gold focus-ring"
           >
-            Go to {product.source} →
+            Go to {product.source} â†’
           </a>
         )}
       </div>
     </div>
   );
 }
+
