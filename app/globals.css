@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Anton", sans-serif;
+  --font-body: "Manrope", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* ---- Signature element: bazaar price tag ---- */
+.price-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f3ede1;
+  color: #14110e;
+  padding: 0.3rem 0.75rem 0.3rem 1.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  clip-path: polygon(
+    12px 0%,
+    100% 0%,
+    100% 100%,
+    12px 100%,
+    0% 50%
+  );
+}
+
+.price-tag::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #14110e;
+}
+
+.price-tag--gold {
+  background: #e8a93b;
+}
+
+.price-tag--dark {
+  background: #211c17;
+  color: #f3ede1;
+}
+
+.price-tag--dark::before {
+  background: #f3ede1;
+}
+
+/* Subtle grain overlay for the hero, keeps the flat colors from feeling too digital */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #e8a93b;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
