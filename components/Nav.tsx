@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { categories } from "@/lib/data";
 
 export default function Nav() {
@@ -24,11 +24,8 @@ export default function Nav() {
           ))}
         </nav>
 
-        
-          href="#subscribe"
-          className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
-        >
-          Unlock ₹99/mo
+        <a href="#subscribe" className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5">
+          Unlock RS99/mo
         </a>
       </div>
     </header>
