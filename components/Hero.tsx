@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -34,7 +34,7 @@ export default function Hero() {
 
         <div className="absolute bottom-8 left-5 right-5 flex flex-col gap-5 md:bottom-12 md:left-10 md:right-10 md:flex-row md:items-end md:justify-between">
           <p className="max-w-sm font-body text-sm text-white/85 md:text-base">
-            Real finds from Flipkart, Myntra, Meesho, Amazon and Nykaa â€”
+            Real finds from Flipkart, Myntra, Meesho, Amazon and Nykaa —
             checked for quality before they ever reach this page. You click,
             you save, the store still gets your order.
           </p>
@@ -49,4 +49,3 @@ export default function Hero() {
     </section>
   );
 }
-

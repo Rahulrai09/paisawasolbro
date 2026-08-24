@@ -1,4 +1,4 @@
-﻿const ITEMS = [
+const ITEMS = [
   "#PAISAWASOOL",
   "FLIPKART",
   "MYNTRA",
@@ -21,11 +21,10 @@ export default function Marquee() {
             className="mx-4 flex items-center gap-4 font-body text-xs font-bold uppercase tracking-[0.15em] text-paper/50"
           >
             {item}
-            <span className="text-gold">âœ¦</span>
+            <span className="text-gold">✦</span>
           </span>
         ))}
       </div>
     </div>
   );
 }
-

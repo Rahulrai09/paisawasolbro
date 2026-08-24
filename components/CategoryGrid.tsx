@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { categories } from "@/lib/data";
 
 export default function CategoryGrid() {
@@ -52,4 +52,3 @@ export default function CategoryGrid() {
     </section>
   );
 }
-

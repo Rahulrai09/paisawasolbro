@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import type { Product } from "@/lib/data";
 
 function discountPercent(price: number, mrp: number) {
@@ -69,10 +69,10 @@ export default function ProductCard({
         </h3>
         <div className="flex items-baseline gap-2">
           <span className="font-accent text-xl italic text-gold">
-            â‚¹{product.price}
+            ₹{product.price}
           </span>
           <span className="text-xs text-paper/40 line-through">
-            â‚¹{product.mrp}
+            ₹{product.mrp}
           </span>
         </div>
 
@@ -88,11 +88,10 @@ export default function ProductCard({
             href={product.href}
             className="mt-2 text-center text-xs font-bold uppercase tracking-wide text-paper/80 underline underline-offset-4 transition-colors hover:text-gold focus-ring"
           >
-            Go to {product.source} â†’
+            Go to {product.source} →
           </a>
         )}
       </div>
     </div>
   );
 }
-

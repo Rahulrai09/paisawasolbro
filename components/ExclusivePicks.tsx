@@ -1,4 +1,4 @@
-﻿import { products } from "@/lib/data";
+import { products } from "@/lib/data";
 import ProductCard from "./ProductCard";
 
 export default function ExclusivePicks() {
@@ -19,7 +19,7 @@ export default function ExclusivePicks() {
               EXCLUSIVE PICKS
             </h2>
             <p className="mt-2 max-w-md text-sm text-paper/70">
-              The finds we don&apos;t put on the free feed â€” better margins on
+              The finds we don&apos;t put on the free feed — better margins on
               quality, checked twice before they&apos;re posted.
             </p>
           </div>
@@ -27,7 +27,7 @@ export default function ExclusivePicks() {
             href="#"
             className="price-tag price-tag--gold w-fit shrink-0 px-6 py-3 text-sm focus-ring transition-transform hover:-translate-y-0.5 hover:rotate-1"
           >
-            Subscribe â€” â‚¹99/month
+            Subscribe — ₹99/month
           </a>
         </div>
 
@@ -40,4 +40,3 @@ export default function ExclusivePicks() {
     </section>
   );
 }
-

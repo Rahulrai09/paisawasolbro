@@ -1,10 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Paisawasolbro â€” Fashion That Doesn't Cost Extra",
+  title: "Paisawasolbro — Fashion That Doesn't Cost Extra",
   description:
-    "Hand-picked fashion, fragrance, and accessory finds from Flipkart, Myntra, Meesho, Amazon and Nykaa â€” curated so you don't have to scroll for hours.",
+    "Hand-picked fashion, fragrance, and accessory finds from Flipkart, Myntra, Meesho, Amazon and Nykaa — curated so you don't have to scroll for hours.",
 };
 
 export default function RootLayout({
@@ -32,4 +32,3 @@ export default function RootLayout({
     </html>
   );
 }
-

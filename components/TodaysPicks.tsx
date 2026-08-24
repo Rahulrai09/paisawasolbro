@@ -1,4 +1,4 @@
-﻿import { products } from "@/lib/data";
+import { products } from "@/lib/data";
 import ProductCard from "./ProductCard";
 
 export default function TodaysPicks() {
@@ -33,4 +33,3 @@ export default function TodaysPicks() {
     </section>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -13,7 +13,7 @@
 }
 
 /* ---- Signature element: hand-tagged bazaar ticket ----
-   A perforated, slightly-rotated price tag with stitched edge â€”
+   A perforated, slightly-rotated price tag with stitched edge —
    references thrift-tag / bazaar price cards rather than a flat
    e-commerce badge. Rotation is per-instance via .tilt-l / .tilt-r. */
 .price-tag {
@@ -74,7 +74,7 @@
   transform: rotate(2deg);
 }
 
-/* Stamped diagonal badge â€” used for discount callouts, reads like an ink stamp */
+/* Stamped diagonal badge — used for discount callouts, reads like an ink stamp */
 .stamp {
   position: relative;
   display: inline-flex;
@@ -97,7 +97,7 @@
   font-weight: 500;
 }
 
-/* Perforated divider â€” evokes a tear-off receipt / ticket stub */
+/* Perforated divider — evokes a tear-off receipt / ticket stub */
 .perforated {
   border-top: 1px dashed rgba(28, 19, 16, 0.18);
   position: relative;
@@ -159,4 +159,3 @@
     scroll-behavior: auto !important;
   }
 }
-

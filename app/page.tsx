@@ -1,4 +1,4 @@
-﻿import Nav from "@/components/Nav";
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import CategoryGrid from "@/components/CategoryGrid";
@@ -19,4 +19,3 @@ export default function Home() {
     </main>
   );
 }
-
