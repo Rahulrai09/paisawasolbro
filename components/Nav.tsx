@@ -14,18 +14,21 @@ export default function Nav() {
 
         <nav className="hidden gap-8 font-body text-sm font-semibold uppercase tracking-wide text-paper/80 md:flex">
           {categories.map((c) => (
-            <Link
+            <a
               key={c.slug}
-              href={`/category/${c.slug}`}
+              href={`#${c.slug}`}
               className="transition-colors hover:text-gold focus-ring"
             >
               {c.name}
-            </Link>
+            </a>
           ))}
         </nav>
 
-        <a href="#subscribe" className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5">
-          Unlock RS99/mo
+        <a
+          href="#subscribe"
+          className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
+        >
+          Unlock ₹99/mo
         </a>
       </div>
     </header>
