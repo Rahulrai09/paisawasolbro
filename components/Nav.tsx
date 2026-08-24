@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { categories } from "@/lib/data";
 
 export default function Nav() {
@@ -14,17 +14,17 @@ export default function Nav() {
 
         <nav className="hidden gap-8 font-body text-sm font-semibold uppercase tracking-wide text-paper/80 md:flex">
           {categories.map((c) => (
-            <a
+            <Link
               key={c.slug}
-              href={`#${c.slug}`}
+              href={`/category/${c.slug}`}
               className="transition-colors hover:text-gold focus-ring"
             >
               {c.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
+        
           href="#subscribe"
           className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
         >
