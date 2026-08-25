@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -34,7 +34,9 @@ export default function Hero() {
 
         <div className="absolute bottom-8 left-5 right-5 flex flex-col gap-5 md:bottom-12 md:left-10 md:right-10 md:flex-row md:items-end md:justify-between">
           <p className="max-w-sm font-body text-sm text-white/85 md:text-base">
-            Trendy, quality fashion under budget shouldn't take all day to find. We hunt through Flipkart, Myntra, Meesho, Amazon and Nykaa so you don't have to — just pick what you like.
+            Trendy, quality fashion under budget shouldn&apos;t take all day
+            to find. We hunt through Flipkart, Myntra, Meesho, Amazon and
+            Nykaa so you don&apos;t have to — just pick what you like.
           </p>
           <a
             href="#today"
@@ -47,4 +49,3 @@ export default function Hero() {
     </section>
   );
 }
-
