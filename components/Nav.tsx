@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default function Nav() {
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
-                    ▾
+                    â–¾
                   </span>
                 </button>
 
@@ -78,10 +78,10 @@ export default function Nav() {
         </nav>
 
         
-          href="#subscribe"
+        <a`n          href="#subscribe"
           className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
         >
-          Unlock ₹99/mo
+          Unlock â‚¹99/mo
         </a>
       </div>
 
