@@ -19,13 +19,10 @@ export default function Hero() {
           Est. curated, not cloned
         </span>
 
-        {/* Oversized overlapping headline */}
+        {/* Headline on one line */}
         <div className="absolute inset-x-0 top-[18%] flex flex-col items-start px-5 leading-[0.85] md:px-10">
-          <span className="font-display text-[16vw] text-white md:text-[8.5vw]">
-            PAISA
-          </span>
-          <span className="font-display -mt-2 text-[16vw] text-goldBright md:-mt-4 md:text-[8.5vw]">
-            WASOL
+          <span className="font-display text-[13vw] text-white md:text-[7vw]">
+            PAISA <span className="text-goldBright">WASOL</span>
           </span>
           <span className="eyebrow mt-3 pl-1 text-lg text-white/80 md:text-2xl">
             hojayega bro, agar tune ye leli toh.
