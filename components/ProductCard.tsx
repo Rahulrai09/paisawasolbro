@@ -25,9 +25,6 @@ export default function ProductCard({
             locked ? "blur-md scale-105" : ""
           }`}
         />
-        <span className="stamp absolute left-3 top-3 border-gold text-gold">
-          {off}% off
-        </span>
         <span className="price-tag price-tag--dark absolute right-3 top-3 text-[0.6rem]">
           via {product.source}
         </span>
