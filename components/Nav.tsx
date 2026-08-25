@@ -41,7 +41,7 @@ export default function Nav() {
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
-                    â–¾
+                    v
                   </span>
                 </button>
 
@@ -78,14 +78,13 @@ export default function Nav() {
         </nav>
 
         
-        <a`n          href="#subscribe"
+          href="#subscribe"
           className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
         >
-          Unlock â‚¹99/mo
+          Unlock Rs.99/mo
         </a>
       </div>
 
-      {/* Mobile: horizontal scroll of category chips, tap opens the full category page */}
       <div className="flex gap-3 overflow-x-auto border-t border-paper/10 px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-paper/80 md:hidden">
         {categories.map((c) => (
           <Link
