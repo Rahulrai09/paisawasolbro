@@ -61,14 +61,14 @@ export default function ProductCard({
       </div>
 
       <div className="perforated flex flex-1 flex-col gap-2 p-4 pt-5">
-        <h3 className="font-body text-sm font-semibold text-paper">
+        <h3 className="font-roman text-sm font-semibold text-paper">
           {product.name}
         </h3>
         <div className="flex items-baseline gap-2">
-          <span className="font-accent text-xl italic text-gold">
+          <span className="font-roman text-xl not-italic text-gold">
             ₹{product.price}
           </span>
-          <span className="text-xs text-paper/40 line-through">
+          <span className="font-roman text-xs text-paper/40 line-through">
             ₹{product.mrp}
           </span>
         </div>
