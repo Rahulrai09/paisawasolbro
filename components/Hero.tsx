@@ -15,10 +15,6 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
 
-        <span className="eyebrow price-tag price-tag--rust tilt-l absolute left-5 top-6 md:left-10 md:top-8">
-          Est. curated, not cloned
-        </span>
-
         {/* Headline on one line */}
         <div className="absolute inset-x-0 top-[18%] flex flex-col items-start px-5 leading-[0.85] md:px-10">
           <span className="font-display text-[13vw] text-white md:text-[7vw]">
@@ -35,12 +31,6 @@ export default function Hero() {
             to find. We hunt through Flipkart, Myntra, Meesho, Amazon and
             Nykaa so you don&apos;t have to — just pick what you like.
           </p>
-          <a
-            href="#today"
-            className="price-tag price-tag--gold tilt-r w-fit focus-ring transition-transform hover:-translate-y-0.5 hover:rotate-0"
-          >
-            See today&apos;s picks
-          </a>
         </div>
       </div>
     </section>
