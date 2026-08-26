@@ -47,7 +47,7 @@ export default function Hero() {
     setActiveIndex((prev) =>
       dir === "next" ? (prev + 1) % SLIDES.length : (prev + 2) % SLIDES.length
     );
-    setTimeout(() => setIsAnimating(false), 650);
+    setTimeout(() => setIsAnimating(false), 900);
   }
 
   const center = activeIndex;
@@ -62,45 +62,42 @@ export default function Hero() {
       case "center":
         return {
           left: "50%",
-          transform: `translateX(-50%) scale(${isMobile ? 1.15 : 1.5}) `,
+          transform: "translateX(-50%) scale(1)",
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
-          height: isMobile ? "58%" : "92%",
-          bottom: isMobile ? "18%" : 0,
+          height: isMobile ? "72%" : "94%",
+          bottom: isMobile ? "3%" : "2%",
         };
       case "left":
         return {
-          left: isMobile ? "16%" : "26%",
+          left: isMobile ? "14%" : "24%",
           transform: "translateX(-50%) scale(1)",
           filter: "blur(2px)",
-          opacity: 0.8,
+          opacity: 0.75,
           zIndex: 10,
-          height: isMobile ? "26%" : "42%",
-          bottom: isMobile ? "20%" : "8%",
+          height: isMobile ? "30%" : "46%",
+          bottom: isMobile ? "8%" : "6%",
         };
       default:
         return {
-          left: isMobile ? "84%" : "74%",
+          left: isMobile ? "86%" : "76%",
           transform: "translateX(-50%) scale(1)",
           filter: "blur(2px)",
-          opacity: 0.8,
+          opacity: 0.75,
           zIndex: 10,
-          height: isMobile ? "26%" : "42%",
-          bottom: isMobile ? "20%" : "8%",
+          height: isMobile ? "30%" : "46%",
+          bottom: isMobile ? "8%" : "6%",
         };
     }
   };
 
   return (
     <section
-      className="relative w-full overflow-hidden transition-colors duration-[650ms]"
+      className="relative w-full overflow-hidden transition-colors duration-[900ms] ease-out"
       style={{ backgroundColor: SLIDES[activeIndex].bg }}
     >
       <div className="relative mx-auto aspect-[1898/780] w-full max-w-[1898px]">
-        <span className="eyebrow absolute left-4 top-5 z-[60] text-xs font-bold uppercase tracking-[0.18em] text-white/90 sm:left-8 sm:top-7">
-          Paisawasolbro
-        </span>
 
         <div className="pointer-events-none absolute inset-x-0 top-[16%] z-[2] flex select-none items-center justify-center">
           <span
@@ -124,7 +121,7 @@ export default function Hero() {
                 style={{
                   aspectRatio: "0.6 / 1",
                   transition:
-                    "transform 650ms cubic-bezier(0.4,0,0.2,1), filter 650ms cubic-bezier(0.4,0,0.2,1), opacity 650ms cubic-bezier(0.4,0,0.2,1), left 650ms cubic-bezier(0.4,0,0.2,1)",
+                    "transform 900ms cubic-bezier(0.22,1,0.36,1), filter 900ms cubic-bezier(0.22,1,0.36,1), opacity 900ms cubic-bezier(0.22,1,0.36,1), left 900ms cubic-bezier(0.22,1,0.36,1), height 900ms cubic-bezier(0.22,1,0.36,1), bottom 900ms cubic-bezier(0.22,1,0.36,1)",
                   willChange: "transform, filter, opacity",
                   ...roleStyle(role),
                 }}
