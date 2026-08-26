@@ -62,8 +62,8 @@ export default function ProductCard({
           <p className="mt-0.5 text-xs text-paper/50">{product.subcategory}</p>
         </div>
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-1">
-          <div className="flex items-baseline gap-1.5 rounded-full bg-inkSoft px-3 py-1.5">
+        <div className="mt-auto flex flex-col gap-2 pt-1 md:flex-row md:items-center md:justify-between">
+          <div className="flex w-fit items-baseline gap-1.5 self-start rounded-full bg-inkSoft px-3 py-1.5 md:self-auto">
             <span className="font-roman text-base font-bold text-paper">
               ₹{product.price}
             </span>
@@ -75,7 +75,7 @@ export default function ProductCard({
           {locked ? (
             <a
               href="#subscribe"
-              className="flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-goldBright focus-ring"
+              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-goldBright focus-ring md:w-auto"
             >
               Unlock
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
@@ -98,7 +98,7 @@ export default function ProductCard({
           ) : (
             <a
               href={product.href}
-              className="flex items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-gold focus-ring"
+              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-gold focus-ring md:w-auto"
             >
               Go
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
