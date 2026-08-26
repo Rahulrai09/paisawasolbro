@@ -67,14 +67,14 @@ export default function Hero() {
           opacity: 1,
           zIndex: 20,
           height: isMobile ? "82%" : "98%",
-          bottom: isMobile ? "1%" : "1%",
+          bottom: "0%",
         };
       case "left":
         return {
           left: isMobile ? "14%" : "24%",
           transform: "translateX(-50%) scale(1)",
           filter: "blur(2px)",
-          opacity: 0.75,
+          opacity: 0.85,
           zIndex: 10,
           height: isMobile ? "30%" : "46%",
           bottom: isMobile ? "8%" : "6%",
@@ -84,7 +84,7 @@ export default function Hero() {
           left: isMobile ? "86%" : "76%",
           transform: "translateX(-50%) scale(1)",
           filter: "blur(2px)",
-          opacity: 0.75,
+          opacity: 0.85,
           zIndex: 10,
           height: isMobile ? "30%" : "46%",
           bottom: isMobile ? "8%" : "6%",
@@ -117,7 +117,7 @@ export default function Hero() {
             return (
               <div
                 key={i}
-                className="absolute"
+                className="absolute overflow-hidden"
                 style={{
                   transition:
                     "transform 900ms cubic-bezier(0.22,1,0.36,1), filter 900ms cubic-bezier(0.22,1,0.36,1), opacity 900ms cubic-bezier(0.22,1,0.36,1), left 900ms cubic-bezier(0.22,1,0.36,1), height 900ms cubic-bezier(0.22,1,0.36,1), bottom 900ms cubic-bezier(0.22,1,0.36,1)",
@@ -129,6 +129,10 @@ export default function Hero() {
                   src={s.src}
                   alt="Rahul wearing featured look"
                   className="h-full w-auto"
+                  style={{
+                    transform: `scale(${role === "center" ? 1.32 : 1.08})`,
+                    transformOrigin: "center center",
+                  }}
                   draggable={false}
                 />
               </div>
