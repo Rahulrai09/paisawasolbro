@@ -97,7 +97,7 @@ export default function Hero() {
       className="relative w-full overflow-hidden transition-colors duration-[900ms] ease-out"
       style={{ backgroundColor: SLIDES[activeIndex].bg }}
     >
-      <div className="relative mx-auto aspect-[3/4] w-full max-w-[1898px] md:aspect-[1898/780]">
+      <div className="relative mx-auto aspect-[386/215] w-full max-w-[1898px] md:aspect-[1898/780]">
 
         <div className="pointer-events-none absolute inset-x-0 top-[16%] z-[2] flex select-none items-center justify-center">
           <span
