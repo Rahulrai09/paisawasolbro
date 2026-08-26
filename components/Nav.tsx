@@ -6,6 +6,7 @@ import { categories } from "@/lib/data";
 
 export default function Nav() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const [mobileOpenSlug, setMobileOpenSlug] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-paper/10 bg-ink/90 backdrop-blur">
@@ -85,17 +86,68 @@ export default function Nav() {
         </a>
       </div>
 
-      {/* Mobile: horizontal scroll of category chips, tap opens the full category page */}
-      <div className="flex gap-3 overflow-x-auto border-t border-paper/10 px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-paper/80 md:hidden">
-        {categories.map((c) => (
-          <Link
-            key={c.slug}
-            href={`/category/${c.slug}`}
-            className="shrink-0 rounded-full border border-inkLine px-3 py-1 focus-ring"
-          >
-            {c.name}
-          </Link>
-        ))}
+      {/* Mobile: compact category chips with tap-to-open subcategory dropdown */}
+      <div className="border-t border-paper/10 md:hidden">
+        <div className="flex gap-1.5 overflow-x-auto px-3 py-2 font-body text-[0.68rem] font-semibold uppercase tracking-wide text-paper/80">
+          {categories.map((c) => {
+            const isOpen = mobileOpenSlug === c.slug;
+            return (
+              <button
+                key={c.slug}
+                type="button"
+                onClick={() =>
+                  setMobileOpenSlug((prev) => (prev === c.slug ? null : c.slug))
+                }
+                className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1.5 focus-ring ${
+                  isOpen
+                    ? "border-gold text-gold"
+                    : "border-inkLine text-paper/80"
+                }`}
+              >
+                {c.name}
+                <span
+                  className={`text-[0.55rem] transition-transform duration-200 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  ▾
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {mobileOpenSlug && (
+          <div className="animate-fadeInUp border-t border-inkLine bg-inkSoft px-3 py-3">
+            {categories
+              .filter((c) => c.slug === mobileOpenSlug)
+              .map((c) => (
+                <div key={c.slug}>
+                  <Link
+                    href={`/category/${c.slug}`}
+                    onClick={() => setMobileOpenSlug(null)}
+                    className="mb-2 inline-block text-xs font-bold uppercase tracking-wide text-gold focus-ring"
+                  >
+                    View all {c.name} →
+                  </Link>
+                  <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+                    {c.subcategories.map((sub) => (
+                      <Link
+                        key={sub}
+                        href={`/category/${c.slug}?sub=${encodeURIComponent(
+                          sub
+                        )}`}
+                        onClick={() => setMobileOpenSlug(null)}
+                        className="rounded px-2 py-1.5 text-xs font-medium normal-case tracking-normal text-paper/75 focus-ring"
+                      >
+                        {sub}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
       </div>
     </header>
   );
