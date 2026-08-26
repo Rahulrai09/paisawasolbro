@@ -1,10 +1,6 @@
 import Image from "next/image";
 import type { Product } from "@/lib/data";
 
-function discountPercent(price: number, mrp: number) {
-  return Math.round(((mrp - price) / mrp) * 100);
-}
-
 export default function ProductCard({
   product,
   locked = false,
@@ -12,11 +8,9 @@ export default function ProductCard({
   product: Product;
   locked?: boolean;
 }) {
-  const off = discountPercent(product.price, product.mrp);
-
   return (
-    <div className="group relative flex flex-col overflow-hidden bg-inkSoft outline outline-1 outline-inkLine transition-transform duration-300 hover:-translate-y-1">
-      <div className="relative aspect-[4/5] overflow-hidden">
+    <div className="group flex flex-col rounded-2xl border border-inkLine bg-ink p-2.5 shadow-lg shadow-black/5 transition-transform duration-300 hover:-translate-y-1">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-inkSoft">
         <Image
           src={product.image}
           alt={product.name}
@@ -25,7 +19,7 @@ export default function ProductCard({
             locked ? "blur-md scale-105" : ""
           }`}
         />
-        <span className="price-tag price-tag--dark absolute right-3 top-3 text-[0.6rem]">
+        <span className="absolute left-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
           via {product.source}
         </span>
 
@@ -60,34 +54,65 @@ export default function ProductCard({
         )}
       </div>
 
-      <div className="perforated flex flex-1 flex-col gap-2 p-4 pt-5">
-        <h3 className="font-roman text-sm font-semibold text-paper">
-          {product.name}
-        </h3>
-        <div className="flex items-baseline gap-2">
-          <span className="font-roman text-xl not-italic text-gold">
-            ₹{product.price}
-          </span>
-          <span className="font-roman text-xs text-paper/40 line-through">
-            ₹{product.mrp}
-          </span>
+      <div className="flex flex-1 flex-col gap-3 px-2 pb-1 pt-4">
+        <div>
+          <h3 className="font-roman text-base font-bold text-paper">
+            {product.name}
+          </h3>
+          <p className="mt-0.5 text-xs text-paper/50">{product.subcategory}</p>
         </div>
 
-        {locked ? (
-          <a
-            href="#subscribe"
-            className="mt-2 text-center text-xs font-bold uppercase tracking-wide text-gold underline underline-offset-4 focus-ring"
-          >
-            Unlock to view link
-          </a>
-        ) : (
-          <a
-            href={product.href}
-            className="mt-2 text-center text-xs font-bold uppercase tracking-wide text-paper/80 underline underline-offset-4 transition-colors hover:text-gold focus-ring"
-          >
-            Go to {product.source} →
-          </a>
-        )}
+        <div className="mt-auto flex items-center justify-between gap-2 pt-1">
+          <div className="flex items-baseline gap-1.5 rounded-full bg-inkSoft px-3 py-1.5">
+            <span className="font-roman text-base font-bold text-paper">
+              ₹{product.price}
+            </span>
+            <span className="font-roman text-[0.7rem] text-paper/40 line-through">
+              ₹{product.mrp}
+            </span>
+          </div>
+
+          {locked ? (
+            <a
+              href="#subscribe"
+              className="flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-goldBright focus-ring"
+            >
+              Unlock
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="5"
+                  y="11"
+                  width="14"
+                  height="9"
+                  rx="1.5"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                />
+                <path
+                  d="M8 11V7a4 4 0 0 1 8 0v4"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                />
+              </svg>
+            </a>
+          ) : (
+            <a
+              href={product.href}
+              className="flex items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-gold focus-ring"
+            >
+              Go
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 17L17 7M17 7H9M17 7v8"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
