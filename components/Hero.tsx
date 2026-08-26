@@ -66,8 +66,8 @@ export default function Hero() {
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
-          height: isMobile ? "72%" : "94%",
-          bottom: isMobile ? "3%" : "2%",
+          height: isMobile ? "82%" : "98%",
+          bottom: isMobile ? "1%" : "1%",
         };
       case "left":
         return {
@@ -119,7 +119,6 @@ export default function Hero() {
                 key={i}
                 className="absolute"
                 style={{
-                  aspectRatio: "0.6 / 1",
                   transition:
                     "transform 900ms cubic-bezier(0.22,1,0.36,1), filter 900ms cubic-bezier(0.22,1,0.36,1), opacity 900ms cubic-bezier(0.22,1,0.36,1), left 900ms cubic-bezier(0.22,1,0.36,1), height 900ms cubic-bezier(0.22,1,0.36,1), bottom 900ms cubic-bezier(0.22,1,0.36,1)",
                   willChange: "transform, filter, opacity",
@@ -129,8 +128,7 @@ export default function Hero() {
                 <img
                   src={s.src}
                   alt="Rahul wearing featured look"
-                  className="h-full w-full object-contain"
-                  style={{ objectPosition: "bottom center" }}
+                  className="h-full w-auto"
                   draggable={false}
                 />
               </div>
