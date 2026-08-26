@@ -3,22 +3,9 @@
 import { useEffect, useState } from "react";
 
 const SLIDES = [
-  {
-    src: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=900&auto=format&fit=crop",
-    bg: "#D32F2F",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=900&auto=format&fit=crop",
-    bg: "#1C1310",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=900&auto=format&fit=crop",
-    bg: "#8B2E2E",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=900&auto=format&fit=crop",
-    bg: "#3D3130",
-  },
+  { src: "/hero/rahul-1.png", bg: "#D32F2F" },
+  { src: "/hero/rahul-2.png", bg: "#1C1310" },
+  { src: "/hero/rahul-3.png", bg: "#8B2E2E" },
 ];
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
@@ -58,60 +45,49 @@ export default function Hero() {
     if (isAnimating) return;
     setIsAnimating(true);
     setActiveIndex((prev) =>
-      dir === "next" ? (prev + 1) % SLIDES.length : (prev + 3) % SLIDES.length
+      dir === "next" ? (prev + 1) % SLIDES.length : (prev + 2) % SLIDES.length
     );
     setTimeout(() => setIsAnimating(false), 650);
   }
 
   const center = activeIndex;
-  const left = (activeIndex + 3) % SLIDES.length;
   const right = (activeIndex + 1) % SLIDES.length;
-  const back = (activeIndex + 2) % SLIDES.length;
+  const left = (activeIndex + 2) % SLIDES.length;
 
   const roleFor = (i: number) =>
-    i === center ? "center" : i === left ? "left" : i === right ? "right" : "back";
+    i === center ? "center" : i === right ? "right" : "left";
 
   const roleStyle = (role: string): React.CSSProperties => {
     switch (role) {
       case "center":
         return {
           left: "50%",
-          transform: `translateX(-50%) scale(${isMobile ? 1.1 : 1.25})`,
+          transform: `translateX(-50%) scale(${isMobile ? 1.15 : 1.5}) `,
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
-          height: isMobile ? "62%" : "88%",
-          bottom: isMobile ? "10%" : 0,
+          height: isMobile ? "58%" : "92%",
+          bottom: isMobile ? "18%" : 0,
         };
       case "left":
         return {
-          left: isMobile ? "18%" : "27%",
+          left: isMobile ? "16%" : "26%",
           transform: "translateX(-50%) scale(1)",
           filter: "blur(2px)",
-          opacity: 0.85,
+          opacity: 0.8,
           zIndex: 10,
-          height: isMobile ? "34%" : "58%",
-          bottom: isMobile ? "12%" : "6%",
-        };
-      case "right":
-        return {
-          left: isMobile ? "82%" : "73%",
-          transform: "translateX(-50%) scale(1)",
-          filter: "blur(2px)",
-          opacity: 0.85,
-          zIndex: 10,
-          height: isMobile ? "34%" : "58%",
-          bottom: isMobile ? "12%" : "6%",
+          height: isMobile ? "26%" : "42%",
+          bottom: isMobile ? "20%" : "8%",
         };
       default:
         return {
-          left: "50%",
+          left: isMobile ? "84%" : "74%",
           transform: "translateX(-50%) scale(1)",
-          filter: "blur(4px)",
-          opacity: 0.5,
-          zIndex: 5,
-          height: isMobile ? "28%" : "48%",
-          bottom: isMobile ? "12%" : "6%",
+          filter: "blur(2px)",
+          opacity: 0.8,
+          zIndex: 10,
+          height: isMobile ? "26%" : "42%",
+          bottom: isMobile ? "20%" : "8%",
         };
     }
   };
@@ -122,12 +98,10 @@ export default function Hero() {
       style={{ backgroundColor: SLIDES[activeIndex].bg }}
     >
       <div className="relative mx-auto aspect-[1898/780] w-full max-w-[1898px]">
-        {/* Top-left brand label */}
         <span className="eyebrow absolute left-4 top-5 z-[60] text-xs font-bold uppercase tracking-[0.18em] text-white/90 sm:left-8 sm:top-7">
           Paisawasolbro
         </span>
 
-        {/* Giant ghost text */}
         <div className="pointer-events-none absolute inset-x-0 top-[16%] z-[2] flex select-none items-center justify-center">
           <span
             className="font-display uppercase leading-none text-white"
@@ -140,7 +114,6 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Carousel */}
         <div className="absolute inset-0 z-[3]">
           {SLIDES.map((s, i) => {
             const role = roleFor(i);
@@ -149,7 +122,7 @@ export default function Hero() {
                 key={i}
                 className="absolute"
                 style={{
-                  aspectRatio: "0.72 / 1",
+                  aspectRatio: "0.6 / 1",
                   transition:
                     "transform 650ms cubic-bezier(0.4,0,0.2,1), filter 650ms cubic-bezier(0.4,0,0.2,1), opacity 650ms cubic-bezier(0.4,0,0.2,1), left 650ms cubic-bezier(0.4,0,0.2,1)",
                   willChange: "transform, filter, opacity",
@@ -158,8 +131,9 @@ export default function Hero() {
               >
                 <img
                   src={s.src}
-                  alt="Fashion look"
-                  className="h-full w-full rounded-lg object-cover shadow-2xl grayscale"
+                  alt="Rahul wearing featured look"
+                  className="h-full w-full object-contain"
+                  style={{ objectPosition: "bottom center" }}
                   draggable={false}
                 />
               </div>
@@ -167,7 +141,6 @@ export default function Hero() {
           })}
         </div>
 
-        {/* Bottom-left text + nav */}
         <div
           className="absolute bottom-5 left-4 z-[60] sm:bottom-10 sm:left-8"
           style={{ maxWidth: 320 }}
@@ -200,7 +173,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom-right link */}
         <a
           href="#today"
           className="font-display absolute bottom-5 right-4 z-[60] flex items-center gap-2 uppercase leading-none text-white/90 transition-colors hover:text-white sm:bottom-10 sm:right-8"
