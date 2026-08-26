@@ -130,8 +130,9 @@ export default function Hero() {
                   alt="Rahul wearing featured look"
                   className="h-full w-auto"
                   style={{
-                    transform: `scale(${role === "center" ? 1.12 : 1.08})`,
-                    transformOrigin: "center center",
+                    transform: `scale(${role === "center" ? 1.0 : 1.08})`,
+                    transformOrigin:
+                      role === "center" ? "bottom center" : "center center",
                   }}
                   draggable={false}
                 />
