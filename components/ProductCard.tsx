@@ -62,12 +62,12 @@ export default function ProductCard({
           <p className="mt-0.5 text-xs text-paper/50">{product.subcategory}</p>
         </div>
 
-        <div className="mt-auto flex flex-col gap-2 pt-1 md:flex-row md:items-center md:justify-between">
-          <div className="flex w-fit items-baseline gap-1.5 self-start rounded-full bg-inkSoft px-3 py-1.5 md:self-auto">
-            <span className="font-roman text-base font-bold text-paper">
+        <div className="mt-auto flex items-center justify-between gap-1.5 pt-1 md:gap-2">
+          <div className="flex shrink-0 items-baseline gap-1 rounded-full bg-inkSoft px-2 py-1 md:gap-1.5 md:px-3 md:py-1.5">
+            <span className="font-roman text-xs font-bold text-paper md:text-base">
               ₹{product.price}
             </span>
-            <span className="font-roman text-[0.7rem] text-paper/40 line-through">
+            <span className="font-roman text-[0.6rem] text-paper/40 line-through md:text-[0.7rem]">
               ₹{product.mrp}
             </span>
           </div>
@@ -75,10 +75,14 @@ export default function ProductCard({
           {locked ? (
             <a
               href="#subscribe"
-              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-goldBright focus-ring md:w-auto"
+              className="flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-gold px-2.5 py-1.5 text-[0.6rem] font-bold uppercase tracking-wide text-white transition-colors hover:bg-goldBright focus-ring md:gap-1.5 md:px-4 md:py-2 md:text-xs"
             >
               Unlock
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-2.5 w-2.5 shrink-0 md:h-3 md:w-3"
+              >
                 <rect
                   x="5"
                   y="11"
@@ -98,10 +102,14 @@ export default function ProductCard({
           ) : (
             <a
               href={product.href}
-              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-paper px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-gold focus-ring md:w-auto"
+              className="flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-paper px-2.5 py-1.5 text-[0.6rem] font-bold uppercase tracking-wide text-white transition-colors hover:bg-gold focus-ring md:gap-1.5 md:px-4 md:py-2 md:text-xs"
             >
               Go
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="h-2.5 w-2.5 shrink-0 md:h-3 md:w-3"
+              >
                 <path
                   d="M7 17L17 7M17 7H9M17 7v8"
                   stroke="currentColor"
