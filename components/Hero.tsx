@@ -58,36 +58,34 @@ export default function Hero() {
     i === center ? "center" : i === right ? "right" : "left";
 
   const roleStyle = (role: string): React.CSSProperties => {
+    const sideScale = isMobile ? 0.366 : 0.469;
+    const sideLift = isMobile ? -8 : -6;
+    const sideShift = isMobile ? 36 : 26;
+
     switch (role) {
       case "center":
         return {
-          left: "50%",
-          transform: "translateX(-50%) scale(1)",
+          transform: "translate(0%, 0%) scale(1)",
+          transformOrigin: "bottom center",
           filter: "blur(0px)",
           opacity: 1,
           zIndex: 20,
-          height: isMobile ? "82%" : "98%",
-          bottom: "0%",
         };
       case "left":
         return {
-          left: isMobile ? "14%" : "24%",
-          transform: "translateX(-50%) scale(1)",
+          transform: `translate(${-sideShift}%, ${sideLift}%) scale(${sideScale})`,
+          transformOrigin: "bottom center",
           filter: "blur(2px)",
           opacity: 0.85,
           zIndex: 10,
-          height: isMobile ? "30%" : "46%",
-          bottom: isMobile ? "8%" : "6%",
         };
       default:
         return {
-          left: isMobile ? "86%" : "76%",
-          transform: "translateX(-50%) scale(1)",
+          transform: `translate(${sideShift}%, ${sideLift}%) scale(${sideScale})`,
+          transformOrigin: "bottom center",
           filter: "blur(2px)",
           opacity: 0.85,
           zIndex: 10,
-          height: isMobile ? "30%" : "46%",
-          bottom: isMobile ? "8%" : "6%",
         };
     }
   };
@@ -117,10 +115,10 @@ export default function Hero() {
             return (
               <div
                 key={i}
-                className="absolute overflow-hidden"
+                className="absolute inset-0 flex items-end justify-center overflow-hidden"
                 style={{
                   transition:
-                    "transform 900ms cubic-bezier(0.22,1,0.36,1), filter 900ms cubic-bezier(0.22,1,0.36,1), opacity 900ms cubic-bezier(0.22,1,0.36,1), left 900ms cubic-bezier(0.22,1,0.36,1), height 900ms cubic-bezier(0.22,1,0.36,1), bottom 900ms cubic-bezier(0.22,1,0.36,1)",
+                    "transform 900ms cubic-bezier(0.22,1,0.36,1), filter 900ms cubic-bezier(0.22,1,0.36,1), opacity 900ms cubic-bezier(0.22,1,0.36,1)",
                   willChange: "transform, filter, opacity",
                   ...roleStyle(role),
                 }}
@@ -129,11 +127,6 @@ export default function Hero() {
                   src={s.src}
                   alt="Rahul wearing featured look"
                   className="h-full w-auto"
-                  style={{
-                    transform: `scale(${role === "center" ? 1.0 : 1.08})`,
-                    transformOrigin:
-                      role === "center" ? "bottom center" : "center center",
-                  }}
                   draggable={false}
                 />
               </div>
