@@ -4,9 +4,11 @@ import type { Product } from "@/lib/data";
 export default function ProductCard({
   product,
   locked = false,
+  hideSource = false,
 }: {
   product: Product;
   locked?: boolean;
+  hideSource?: boolean;
 }) {
   return (
     <div className="group flex flex-col rounded-2xl border border-inkLine bg-ink p-2.5 shadow-lg shadow-black/5 transition-transform duration-300 hover:-translate-y-1">
@@ -19,9 +21,11 @@ export default function ProductCard({
             locked ? "blur-md scale-105" : ""
           }`}
         />
-        <span className="absolute left-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-          via {product.source}
-        </span>
+        {!hideSource && (
+          <span className="absolute left-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+            via {product.source}
+          </span>
+        )}
 
         {locked && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/65 text-center">

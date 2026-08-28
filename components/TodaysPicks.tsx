@@ -1,7 +1,49 @@
 import { products } from "@/lib/data";
+import type { Product } from "@/lib/data";
 import ProductCard from "./ProductCard";
 
+const PLATFORMS = ["Myntra", "Flipkart", "Amazon", "Meesho", "Nykaa"];
+
+function PlatformRow({
+  platform,
+  items,
+}: {
+  platform: string;
+  items: Product[];
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mb-10 last:mb-0">
+      <div className="mb-4 flex items-center justify-between">
+        <a
+          href="#"
+          className="text-xs font-bold uppercase tracking-wide text-gold hover:text-goldBright focus-ring"
+        >
+          View all
+        </a>
+        <span className="text-xs font-bold uppercase tracking-wide text-paper/50">
+          {platform}
+        </span>
+      </div>
+
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible md:pb-0">
+        {items.map((p) => (
+          <div
+            key={p.id}
+            className="w-[68%] shrink-0 snap-start sm:w-[42%] md:w-auto"
+          >
+            <ProductCard product={p} hideSource />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function TodaysPicks() {
+  const free = products.filter((p) => !p.exclusive);
+
   return (
     <section
       id="today"
@@ -22,13 +64,15 @@ export default function TodaysPicks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {products
-            .filter((p) => !p.exclusive)
-            .map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-        </div>
+        {PLATFORMS.map((platform) => (
+          <PlatformRow
+            key={platform}
+            platform={platform}
+            items={free
+              .filter((p) => p.source.toLowerCase() === platform.toLowerCase())
+              .slice(0, 4)}
+          />
+        ))}
       </div>
     </section>
   );
