@@ -167,7 +167,7 @@ export default function Hero() {
         </div>
 
         <a
-          href="#today"
+          href="/today"
           className="font-display absolute bottom-5 right-4 z-[60] flex items-center gap-2 uppercase leading-none text-white/90 transition-colors hover:text-white sm:bottom-10 sm:right-8"
           style={{ fontSize: "clamp(16px, 3vw, 40px)", letterSpacing: "-0.02em" }}
         >
