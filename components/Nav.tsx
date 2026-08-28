@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { categories } from "@/lib/data";
+import SearchBar from "./SearchBar";
 
 export default function Nav() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
@@ -84,6 +85,11 @@ export default function Nav() {
         >
           Unlock ₹99/mo
         </a>
+      </div>
+
+      {/* Search bar - visible directly under the main nav on every page */}
+      <div className="border-t border-paper/10 px-5 py-2.5 md:px-10">
+        <SearchBar />
       </div>
 
       {/* Mobile: compact category chips with tap-to-open subcategory dropdown */}

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { categories } from "@/lib/data";
-import SearchBar from "./SearchBar";
 
 function InstagramIcon() {
   return (
@@ -57,13 +56,6 @@ export default function Footer() {
   return (
     <footer className="border-t border-inkLine bg-inkSoft/40 px-5 pt-14 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col items-start gap-3 border-b border-inkLine pb-10">
-          <h3 className="font-body text-xs font-bold uppercase tracking-wide text-paper">
-            Search picks
-          </h3>
-          <SearchBar />
-        </div>
-
         <div className="grid grid-cols-2 gap-10 pb-12 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <Link

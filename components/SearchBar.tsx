@@ -85,7 +85,7 @@ export default function SearchBar() {
       </form>
 
       {open && query.trim().length >= 2 && (
-        <div className="absolute bottom-full left-0 z-50 mb-2 max-h-80 w-full overflow-y-auto rounded-xl border border-inkLine bg-ink shadow-2xl">
+        <div className="absolute left-0 top-full z-50 mt-2 max-h-80 w-full overflow-y-auto rounded-xl border border-inkLine bg-ink shadow-2xl">
           {hasResults ? (
             <>
               {results.categoryMatches.length > 0 && (
