@@ -16,15 +16,15 @@ function PlatformRow({
   return (
     <div className="mb-10 last:mb-0">
       <div className="mb-4 flex items-center justify-between">
+        <span className="text-xs font-extrabold uppercase tracking-wide text-paper/70">
+          {platform}
+        </span>
         <a
           href="#"
-          className="text-xs font-bold uppercase tracking-wide text-gold hover:text-goldBright focus-ring"
+          className="text-xs font-extrabold uppercase tracking-wide text-gold hover:text-goldBright focus-ring"
         >
           View all
         </a>
-        <span className="text-xs font-bold uppercase tracking-wide text-paper/50">
-          {platform}
-        </span>
       </div>
 
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible md:pb-0">
