@@ -79,6 +79,10 @@ export default function Nav() {
           })}
         </nav>
 
+        <div className="hidden md:block md:w-64">
+          <SearchBar />
+        </div>
+
         <a
           href="#subscribe"
           className="price-tag price-tag--gold focus-ring transition-transform hover:-translate-y-0.5"
@@ -87,8 +91,8 @@ export default function Nav() {
         </a>
       </div>
 
-      {/* Search bar - visible directly under the main nav on every page */}
-      <div className="border-t border-paper/10 px-5 py-2.5 md:px-10">
+      {/* Search bar - mobile only, desktop version sits inline above */}
+      <div className="border-t border-paper/10 px-5 py-2.5 md:hidden">
         <SearchBar />
       </div>
 
