@@ -32,12 +32,12 @@ function PlatformPillar({
           src={image}
           alt={name}
           fill
-          className="object-cover grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:grayscale-0"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
         />
       ) : (
         <div className="h-full w-full bg-inkSoft" />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/40 transition-opacity duration-500 group-hover:from-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/25" />
       <span className="absolute inset-x-0 top-2 text-center text-[0.55rem] font-extrabold uppercase tracking-wide text-white drop-shadow md:text-[0.7rem]">
         {name}
       </span>
