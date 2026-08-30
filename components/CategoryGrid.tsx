@@ -35,9 +35,6 @@ export default function CategoryGrid() {
               className="object-cover grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:grayscale-0"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent transition-opacity duration-500 group-hover:from-black/70" />
-            <span className="price-tag price-tag--dark tilt-r absolute right-3 top-3 !px-2 !py-1 text-[0.6rem]">
-              0{i + 1}
-            </span>
             <div className="absolute bottom-0 left-0 right-0 p-4 transition-transform duration-500 group-hover:-translate-y-1">
               <h3 className="font-display text-xl text-white md:text-2xl">
                 {c.name}
