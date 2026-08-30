@@ -50,10 +50,6 @@ export default function TodaysPicks() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-500 group-hover:from-black/75" />
 
-                <span className="price-tag price-tag--dark tilt-r absolute right-3 top-3 !px-2 !py-1 text-[0.6rem]">
-                  0{i + 1}
-                </span>
-
                 <span
                   className="font-display absolute left-4 top-6 whitespace-nowrap text-lg text-white/90 md:left-5 md:top-8 md:text-2xl"
                   style={{ writingMode: "vertical-rl" }}
