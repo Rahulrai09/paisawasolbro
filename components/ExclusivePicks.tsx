@@ -10,7 +10,7 @@ export default function ExclusivePicks() {
       className="border-t border-paper/10 px-5 py-16 md:px-10 md:py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col gap-6 border border-inkLine bg-inkSoft p-6 md:flex-row md:items-center md:justify-between md:p-10">
+        <div className="mb-10 flex flex-col gap-6 border border-inkLine bg-inkSoft px-6 py-8 md:flex-row md:items-center md:justify-between md:px-10 md:py-14">
           <div>
             <span className="eyebrow price-tag price-tag--rust tilt-l mb-3">
               Members only
