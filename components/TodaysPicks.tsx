@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { products, type Source } from "@/lib/data";
 
@@ -37,7 +37,7 @@ export default function TodaysPicks() {
             return (
               <Link
                 key={platform.name}
-                href={`/category/clothing`}
+                href={`/platform/${platform.name.toLowerCase()}`}
                 className="group relative h-full flex-1 overflow-hidden bg-ink outline outline-1 outline-inkLine transition-[flex-grow] duration-500 ease-out hover:flex-[2.4] focus-ring"
               >
                 {sample && (
@@ -73,3 +73,4 @@ export default function TodaysPicks() {
     </section>
   );
 }
+

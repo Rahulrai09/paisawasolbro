@@ -1,4 +1,4 @@
-// This file is the single source of truth for site content today.
+﻿// This file is the single source of truth for site content today.
 // It's structured to mirror what a database query would return, so
 // swapping in Postgres/Supabase later means changing the fetch layer,
 // not the shape every component already expects.
@@ -432,6 +432,13 @@ export function getProductsByCategory(slug: string) {
   return products.filter((p) => p.categorySlug === slug);
 }
 
+export function getProductsBySource(source: string) {
+  return products.filter(
+    (p) => p.source.toLowerCase() === source.toLowerCase()
+  );
+}
+
 export function getCategoryBySlug(slug: string) {
   return categories.find((c) => c.slug === slug);
 }
+
