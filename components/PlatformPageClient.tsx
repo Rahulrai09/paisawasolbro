@@ -4,11 +4,7 @@ import { useMemo, useState } from "react";
 import type { Product } from "@/lib/data";
 import ProductCard from "./ProductCard";
 
-type SortOption = "recommended" | "price-low" | "price-high" | "discount";
-
-function discountOf(p: Product) {
-  return Math.round(((p.mrp - p.price) / p.mrp) * 100);
-}
+type SortOption = "recommended" | "price-low" | "price-high";
 
 export default function PlatformPageClient({
   products,
@@ -22,7 +18,9 @@ export default function PlatformPageClient({
   const [checkedCategories, setCheckedCategories] = useState<Set<string>>(
     new Set()
   );
-  const [minDiscount, setMinDiscount] = useState<number>(0);
+  const [checkedSubcategories, setCheckedSubcategories] = useState<Set<string>>(
+    new Set()
+  );
   const [sortBy, setSortBy] = useState<SortOption>("recommended");
   const [showFiltersMobile, setShowFiltersMobile] = useState(false);
 
@@ -35,9 +33,18 @@ export default function PlatformPageClient({
     });
   }
 
+  function toggleSubcategory(sub: string) {
+    setCheckedSubcategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(sub)) next.delete(sub);
+      else next.add(sub);
+      return next;
+    });
+  }
+
   function clearAll() {
     setCheckedCategories(new Set());
-    setMinDiscount(0);
+    setCheckedSubcategories(new Set());
   }
 
   const filtered = useMemo(() => {
@@ -47,20 +54,19 @@ export default function PlatformPageClient({
       list = list.filter((p) => checkedCategories.has(p.categorySlug));
     }
 
-    if (minDiscount > 0) {
-      list = list.filter((p) => discountOf(p) >= minDiscount);
+    if (checkedSubcategories.size > 0) {
+      list = list.filter((p) => checkedSubcategories.has(p.subcategory));
     }
 
     const sorted = [...list];
     if (sortBy === "price-low") sorted.sort((a, b) => a.price - b.price);
     else if (sortBy === "price-high") sorted.sort((a, b) => b.price - a.price);
-    else if (sortBy === "discount")
-      sorted.sort((a, b) => discountOf(b) - discountOf(a));
 
     return sorted;
-  }, [products, checkedCategories, minDiscount, sortBy]);
+  }, [products, checkedCategories, checkedSubcategories, sortBy]);
 
-  const activeFilterCount = checkedCategories.size + (minDiscount > 0 ? 1 : 0);
+  const activeFilterCount =
+    checkedCategories.size + checkedSubcategories.size;
 
   const categoryCounts = categorySlugs.map((slug) => ({
     slug,
@@ -68,7 +74,18 @@ export default function PlatformPageClient({
     count: products.filter((p) => p.categorySlug === slug).length,
   }));
 
-  const DISCOUNT_TIERS = [30, 50, 70];
+  // Subcategories scoped to whichever categories are checked (or all, if none checked)
+  const relevantProducts =
+    checkedCategories.size > 0
+      ? products.filter((p) => checkedCategories.has(p.categorySlug))
+      : products;
+
+  const subcategoryCounts = Array.from(
+    new Set(relevantProducts.map((p) => p.subcategory))
+  ).map((sub) => ({
+    sub,
+    count: relevantProducts.filter((p) => p.subcategory === sub).length,
+  }));
 
   return (
     <div className="animate-fadeIn">
@@ -96,7 +113,6 @@ export default function PlatformPageClient({
               <option value="recommended" className="text-ink">Recommended</option>
               <option value="price-low" className="text-ink">Price: Low to High</option>
               <option value="price-high" className="text-ink">Price: High to Low</option>
-              <option value="discount" className="text-ink">Discount: High to Low</option>
             </select>
           </label>
         </div>
@@ -133,7 +149,6 @@ export default function PlatformPageClient({
                 <option value="recommended" className="text-ink">Recommended</option>
                 <option value="price-low" className="text-ink">Price: Low to High</option>
                 <option value="price-high" className="text-ink">Price: High to Low</option>
-                <option value="discount" className="text-ink">Discount: High to Low</option>
               </select>
             </div>
 
@@ -162,24 +177,22 @@ export default function PlatformPageClient({
 
             <div className="border-t border-paper/10 pt-5">
               <p className="mb-3 text-xs font-bold uppercase tracking-wide text-paper/50">
-                Discount
+                Subcategory
               </p>
-              <div className="flex flex-col gap-2.5">
-                {DISCOUNT_TIERS.map((tier) => (
+              <div className="flex max-h-64 flex-col gap-2.5 overflow-y-auto pr-1">
+                {subcategoryCounts.map((s) => (
                   <label
-                    key={tier}
+                    key={s.sub}
                     className="flex cursor-pointer items-center gap-2.5 text-sm text-paper/80 hover:text-paper"
                   >
                     <input
-                      type="radio"
-                      name="discount"
-                      checked={minDiscount === tier}
-                      onChange={() =>
-                        setMinDiscount((prev) => (prev === tier ? 0 : tier))
-                      }
+                      type="checkbox"
+                      checked={checkedSubcategories.has(s.sub)}
+                      onChange={() => toggleSubcategory(s.sub)}
                       className="h-4 w-4 accent-gold"
                     />
-                    {tier}% and above
+                    {s.sub}
+                    <span className="text-xs text-paper/40">({s.count})</span>
                   </label>
                 ))}
               </div>
@@ -190,7 +203,7 @@ export default function PlatformPageClient({
         <div className="flex-1">
           {filtered.length > 0 ? (
             <div
-              key={`${sortBy}-${minDiscount}-${checkedCategories.size}`}
+              key={`${sortBy}-${checkedCategories.size}-${checkedSubcategories.size}`}
               className="grid grid-cols-2 gap-4 md:grid-cols-3"
             >
               {filtered.map((p, i) => (
